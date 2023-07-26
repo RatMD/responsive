@@ -1,0 +1,20 @@
+tabs:
+    fields:
+        default_driver:
+            tab: ratmd.responsive::lang.settings.tabs.general
+            type: dropdown
+            label: ratmd.responsive::lang.settings.options.default_driver
+            comment: ratmd.responsive::lang.settings.options.default_driver_comment
+            showSearch: false
+
+        hash_filenames:
+            tab: ratmd.responsive::lang.settings.tabs.general
+            type: switch
+            label: ratmd.responsive::lang.settings.options.hash_filenames
+            comment: ratmd.responsive::lang.settings.options.hash_filenames_comment
+            default: true
+        
+        content:
+            tab: ratmd.responsive::lang.settings.tabs.details
+            type: partial
+            path: ~/plugins/ratmd/responsive/models/setting/details.htm

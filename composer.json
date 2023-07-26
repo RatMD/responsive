@@ -1,0 +1,33 @@
+{
+    "name": "ratmd/responsive-plugin",
+    "type": "october-plugin",
+    "version": "0.1.0",
+    "description": "Provide different responsive sizes and formats of your pictures.",
+    "keywords": [
+        "october", 
+        "octobercms", 
+        "responsive",
+        "images",
+        "lighthouse"
+    ],
+    "homepage": "https://octobercms.com/plugin/ratmd-responsive",
+    "license": "MIT",
+    "support": {
+        "email": "info@rat.md",
+        "issues": "https://www.github.com/RatMD/responsive-plugin/issues",
+        "source": "https://www.github.com/RatMD/responsive-plugin"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">= 7.4 || >= 8.0",
+        "composer/installers": "~1.0"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

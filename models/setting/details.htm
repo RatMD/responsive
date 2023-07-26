@@ -1,0 +1,102 @@
+
+<?php
+    $drivers = RatMD\Responsive\Classes\ResponsiveHandler::getSupportedDrivers();
+    $formats = [
+        'avif'  => trans('ratmd.responsive::lang.settings.details.avif_support'),
+        'bmp'   => trans('ratmd.responsive::lang.settings.details.bmp_support'),
+        'gif'   => trans('ratmd.responsive::lang.settings.details.gif_support'),
+        'jpeg'  => trans('ratmd.responsive::lang.settings.details.jpeg_support'),
+        'png'   => trans('ratmd.responsive::lang.settings.details.png_support'),
+        'webp'  => trans('ratmd.responsive::lang.settings.details.webp_support'),
+    ];
+?>
+
+<h3 style="font-size:1.4rem;"><?= trans('ratmd.responsive::lang.settings.details.driver_support') ?></h3>
+<div class="d-flex mb-3">
+    <table class="table table-striped" style="width:450px;">
+        <thead>
+            <tr>
+                <th width="300px"></th>
+                <th class="text-center" width="80px">GD</th>
+                <th class="text-center" width="80px">GM</th>
+                <th class="text-center" width="80px">IM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th width="300px"><?= trans('ratmd.responsive::lang.settings.details.extension_installed') ?></th>
+
+                <?php if (!empty($drivers['gd'])): ?>
+                    <td class="text-success text-center px-0" width="80px">
+                        <i class="icon-check"></i>
+                    </td>
+                <?php else: ?>
+                    <td class="text-danger text-center" width="80px">
+                        <i class="icon-times"></i>
+                    </td>
+                <?php endif; ?>
+
+                <?php if (!empty($drivers['gmagick'])): ?>
+                    <td class="text-success text-center" width="80px">
+                        <i class="icon-check"></i>
+                    </td>
+                <?php else: ?>
+                    <td class="text-danger text-center" width="80px">
+                        <i class="icon-times"></i>
+                    </td>
+                <?php endif; ?>
+
+                <?php if (!empty($drivers['imagick'])): ?>
+                    <td class="text-success text-center" width="80px">
+                        <i class="icon-check"></i>
+                    </td>
+                <?php else: ?>
+                    <td class="text-danger text-center" width="80px">
+                        <i class="icon-times"></i>
+                    </td>
+                <?php endif; ?>
+            </tr>
+            
+            <?php 
+                $gdSupport = empty($drivers['gd']) ? [] : $drivers['gd']::getSupportedFormats();
+                $gmagickSupport = empty($drivers['gmagick']) ? [] : $drivers['gmagick']::getSupportedFormats();
+                $imagickSupport = empty($drivers['imagick']) ? [] : $drivers['imagick']::getSupportedFormats();
+            ?>
+            <?php foreach($formats AS $format => $label): ?>
+                <tr>
+                    <th width="250px"><?= $label ?></th>
+
+                    <?php if (in_array($format, $gdSupport)): ?>
+                        <td class="text-success text-center" width="80px">
+                            <i class="icon-check"></i>
+                        </td>
+                    <?php else: ?>
+                        <td class="text-danger text-center" width="80px">
+                            <i class="icon-times"></i>
+                        </td>
+                    <?php endif; ?>
+
+                    <?php if (in_array($format, $gmagickSupport)): ?>
+                        <td class="text-success text-center" width="80px">
+                            <i class="icon-check"></i>
+                        </td>
+                    <?php else: ?>
+                        <td class="text-danger text-center" width="80px">
+                            <i class="icon-times"></i>
+                        </td>
+                    <?php endif; ?>
+
+                    <?php if (in_array($format, $imagickSupport)): ?>
+                        <td class="text-success text-center" width="80px">
+                            <i class="icon-check"></i>
+                        </td>
+                    <?php else: ?>
+                        <td class="text-danger text-center" width="80px">
+                            <i class="icon-times"></i>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
