@@ -19,58 +19,15 @@ Requirements
 
 Template Markups
 ----------------
+The **Responsive** OctoberCMS Plugin provides the `convert` TWIG filter to quickly create a 
+responsive source of the desired image, as well as the `picture` TWIG function, to generate a full
+`<picture><source />` image set with the desired breakpoints.
 
-**Responsive** adds the following template markups.
-
-### convert
-
-`convert` is registered as TWIG filter and can be used to provide one single additional format or 
-size of the desired image. The desired values are passed inside an object, you need to pass at least 
-one conversion argument (either a size or a format ... or, of course, both).
-
-#### Syntax
+Check out the documentation for more details.
 
 
-```js
-convert({ width: 1280 })
-convert({ width: 1280, height: 720 })
-convert({ width: 1280, height: 720, format: 'webp' })
-```
+Copyright & License
+---------
+Copyright © 2023 rat.md.
 
-Supported Parameters:
-
-Example:
-
-```html
-<picture>
-    <source srcset="{{ 'assets/imgs/image.jpeg'|theme|convert(width=1024, format='image/webp') }}" media="(min-width: 768px)" type="image/webp" />
-    <source srcset="{{ 'assets/imgs/image.jpeg'|theme|convert(width=1024) }}" media="(min-width: 768px)" />
-    <source srcset="{{ 'assets/imgs/image.jpeg'|theme|convert(width=768, format='image/webp') }}" type="image/webp" />
-    <source srcset="{{ 'assets/imgs/image.jpeg'|theme|convert(width=768) }}" />
-    <img src="{{ 'assets/imgs/image.jpg'|theme }}" alt="Image" />
-</picture>
-```
-
-### picture
-
-`picture` is registered as TWIG function and generates a `<picture>` element with the desired 
-source set.
-
-```html
-{{ 
-    picture(
-        file: 'assets/imgs/image.jpg'|theme,
-        formats: ['webp', 'jpg'],
-        breakpoints: {
-            0: [768],
-            768: [1024],
-            1024: [1200],
-            1200: [1920]
-        },
-        attributes: {
-            loading: 'lazy',
-            'data-custom': '12'
-        }
-    )
-}}
-```
+Published under the MIT-License.
